@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useStore } from '../stores/main';
 import { useOptionsStore } from '../stores/options';
+import LineLogo from './LineLogo.vue';
 
 const store = useStore();
 const options = useOptionsStore();
@@ -55,12 +56,7 @@ const sortedLines = computed(() =>
             <div id="lines" :class="[options.lines.length === 0 ? 'select-all' : null]">
                 <label v-for="line in sortedLines" :key="line.id" class="line">
                     <input v-model="options.lines" type="checkbox" :value="line.id" />
-                    <span
-                        class="line-logo"
-                        :style="`background-color: ${line.color}; color: ${line.textColor}`"
-                    >
-                        {{ line.name }}
-                    </span>
+                    <LineLogo :line="line" />
                 </label>
             </div>
 

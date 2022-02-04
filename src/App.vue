@@ -77,16 +77,6 @@ a:active {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.line-logo {
-    display: inline-block;
-    min-width: 3.5rem;
-    padding: 0.5rem 0.4rem 0.4rem;
-    border-radius: 0.6rem;
-    font-size: 1.5rem;
-    line-height: 1;
-    font-weight: bold;
-    text-align: center;
-}
 /* /DEFAULTS */
 
 /* SITE MAIN: main content, displays train cards and site footer */
