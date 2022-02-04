@@ -1,6 +1,8 @@
 <script setup>
 import { computed, toRaw } from 'vue';
 import { useStore } from '../stores/main';
+import { useOptionsStore } from '../stores/options';
+import { useRouter, useRoute } from 'vue-router';
 import LineLogo from './LineLogo.vue';
 
 const props = defineProps({
@@ -11,6 +13,9 @@ const props = defineProps({
 });
 
 const store = useStore();
+const options = useOptionsStore();
+const router = useRouter();
+const route = useRoute();
 
 function getStationName(stationId, emptyName) {
     if (stationId === null) return emptyName || '';
@@ -64,10 +69,19 @@ const progressBarStyle = computed(() => {
     return `width: ${progress.value}%`;
 });
 
-// TODO
-function onClick() {
-    console.log('click');
+function toggleSelect() {
+    const idx = options.trains.indexOf(props.train.id);
+    if (idx === -1) options.trains.push(props.train.id);
+    else options.trains.splice(idx, 1);
+
+    if (route.name !== 'PageMap') {
+        router.push({ name: 'PageMap' });
+    }
 }
+
+const isSelected = computed(() => {
+    return options.trains.includes(props.train.id);
+});
 
 function formatTime(timestamp) {
     if (timestamp === null) return '';
@@ -168,7 +182,12 @@ const vehicleClass = (vehicle) => {
                     {{ vehicle.number }}
                 </li>
             </ul>
-            <a class="action-link" @click.prevent="onClick" />
+            <a
+                href=""
+                class="action-link"
+                @click.prevent="toggleSelect"
+                v-text="isSelected ? '×' : 'ℹ'"
+            />
         </aside>
         <div class="last-update"></div>
     </li>

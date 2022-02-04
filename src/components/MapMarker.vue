@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch, toRaw } from 'vue';
+import { computed, ref, onMounted, onUnmounted, watch, toRaw } from 'vue';
 import * as L from 'leaflet';
+import { useOptionsStore } from '../stores/options';
 
 const defaultCoordinates = [47.9052567, 11.3084582]; // Starnberger See als "Fallback"
 
@@ -16,6 +17,7 @@ const props = defineProps({
     },
 });
 
+const options = useOptionsStore();
 const svg = ref();
 let mapMarker;
 
@@ -43,20 +45,30 @@ watch(
     }
 );
 
+onUnmounted(() => {
+    mapMarker.remove();
+});
+
+const isSelected = computed(() => {
+    return options.trains.includes(props.train.id);
+});
+
 // TODO: train.heading
 // TODO: train.historyPath
 // TODO: train.estimatedPath
 
 // TODO: https://github.com/Leaflet/Leaflet/issues/7017
-
-onUnmounted(() => {
-    mapMarker.remove();
-});
 </script>
 
 <template>
     <div style="display: none">
-        <svg ref="svg" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            ref="svg"
+            :class="[isSelected ? 'is-selected' : null]"
+            viewBox="0 0 10 10"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <g :class="['container', !train.isActive ? 'inactive' : null]">
                 <g class="marker" :style="`fill: ${train.line.color}`">
                     <circle cy="5" cx="5" r="3" />
