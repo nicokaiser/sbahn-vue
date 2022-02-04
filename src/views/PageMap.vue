@@ -6,6 +6,7 @@ import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import areas from '../constants/areas';
 import MapMarker from '../components/MapMarker.vue';
+import TrainContainer from '../components/TrainContainer.vue';
 
 const store = useStore();
 const options = useOptionsStore();
@@ -75,6 +76,12 @@ const trains = computed(() => {
             return result;
         });
 });
+
+const selectedTrains = computed(() => {
+    return Object.values(store.trains).filter((train) => options.trains.includes(train.id));
+});
+
+// TODO: if train-details become empty, the map needs to be refit
 </script>
 
 <template>
@@ -84,11 +91,11 @@ const trains = computed(() => {
             <MapMarker v-for="train in trains" :key="train.id" :map="map" :train="train" />
         </div>
 
-        <!--
-        <div id="train-details">
-            <ul id="selected-trains"></ul>
+        <div id="train-details" :class="[selectedTrains.length > 0 ? 'is-active' : null]">
+            <ul id="selected-trains">
+                <TrainContainer v-for="train in selectedTrains" :key="train.id" :train="train" />
+            </ul>
         </div>
-        -->
     </div>
 </template>
 
@@ -102,7 +109,7 @@ const trains = computed(() => {
     overflow: auto;
 }
 @media (orientation: landscape) and (min-width: 27em) {
-    #page-map.is-active {
+    #page-map {
         flex-direction: row;
     }
 }
