@@ -26,7 +26,6 @@ const trains = computed(() => {
         <ul id="trains">
             <TrainContainer v-for="train in trains" :key="train.id" :train="train" />
         </ul>
-
         <ul id="log">
             <li v-for="(message, index) in store.messages" :key="index" class="message">
                 <span class="time">{{ message.time }}</span>

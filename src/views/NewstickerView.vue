@@ -21,14 +21,11 @@ const formatTime = (updated) => {
             <div v-for="(newsMessage, i) in store.news.messages" :key="i" class="news-message">
                 <div class="news-header">
                     <span class="time">{{ formatTime(newsMessage.updated) }}</span>
-
                     <span class="lines">
                         <LineLogo v-for="(line, j) in newsMessage.lines" :key="j" :line="line" />
                     </span>
                 </div>
-
                 <h3 class="title">{{ newsMessage.title }}</h3>
-
                 <div class="content" v-html="newsMessage.content" />
             </div>
         </div>

@@ -1,36 +1,36 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import PageList from './views/PageList.vue';
-import PageMap from './views/PageMap.vue';
-import PageNewsticker from './views/PageNewsticker.vue';
-import PageDebug from './views/PageDebug.vue';
+import ListView from './views/ListView.vue';
+import MapView from './views/MapView.vue';
+import NewstickerView from './views/NewstickerView.vue';
+import DebugView from './views/DebugView.vue';
 
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
         {
-            name: 'PageList',
+            name: 'list',
             path: '/',
-            component: PageList,
+            component: ListView,
         },
         {
-            name: 'PageMap',
+            name: 'map',
             path: '/map',
-            component: PageMap,
+            component: MapView,
         },
         {
-            name: 'PageNewsticker',
+            name: 'newsticker',
             path: '/newsticker',
-            component: PageNewsticker,
+            component: NewstickerView,
         },
         {
-            name: 'PageDebug',
+            name: 'debug',
             path: '/debug',
-            component: PageDebug,
+            component: DebugView,
         },
         {
             name: 'NotFound',
             path: '/:pathMatch(.*)*',
-            redirect: () => ({ name: 'PageList' }),
+            redirect: () => ({ name: 'list' }),
         },
     ],
 });

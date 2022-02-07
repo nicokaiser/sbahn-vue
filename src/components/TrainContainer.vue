@@ -74,8 +74,8 @@ function toggleSelect() {
     if (idx === -1) options.trains.push(props.train.id);
     else options.trains.splice(idx, 1);
 
-    if (route.name !== 'PageMap') {
-        router.push({ name: 'PageMap' });
+    if (route.name !== 'map') {
+        router.push({ name: 'map' });
     }
 }
 

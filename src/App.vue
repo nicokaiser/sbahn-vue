@@ -8,9 +8,8 @@ useSBahn();
 
 <template>
     <TheHeader />
-
     <main class="site-main">
-        <router-view />
+        <RouterView />
         <TheFooter />
     </main>
 </template>
