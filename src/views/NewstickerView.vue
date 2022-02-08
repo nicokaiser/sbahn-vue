@@ -25,6 +25,7 @@ const formatTime = (updated) => {
                         <LineLogo v-for="(line, j) in newsMessage.lines" :key="j" :line="line" />
                     </span>
                 </div>
+
                 <h3 class="title">{{ newsMessage.title }}</h3>
                 <div class="content" v-html="newsMessage.content" />
             </div>

@@ -87,9 +87,11 @@ const selectedTrains = computed(() => {
 <template>
     <div id="page-map" class="page">
         <div id="map" ref="div" />
+
         <div v-if="map">
             <MapMarker v-for="train in trains" :key="train.id" :map="map" :train="train" />
         </div>
+
         <div id="train-details" :class="[selectedTrains.length > 0 ? 'is-active' : null]">
             <ul id="selected-trains">
                 <TrainContainer v-for="train in selectedTrains" :key="train.id" :train="train" />

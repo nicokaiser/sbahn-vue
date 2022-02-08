@@ -18,6 +18,7 @@ const clear = () => {
                             <button id="clear-train-events" @click="clear">Leeren</button>
                         </th>
                     </tr>
+
                     <tr>
                         <th class="is-number">event-time</th>
                         <th class="is-number">aimed-time-offset</th>
@@ -31,6 +32,7 @@ const clear = () => {
                         <th class="is-number">transmitting-vehicle</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr v-for="(trainEvent, index) in store.trainEvents" :key="index">
                         <td class="event-timestamp is-number" :title="'Delay: ' + trainEvent.delay">

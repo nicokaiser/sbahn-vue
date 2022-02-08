@@ -125,10 +125,12 @@ const vehicleClass = (vehicle) => {
             <div class="train-line">
                 <LineLogo :line="train.line" />
             </div>
+
             <h2 class="destination">
                 {{ getStationName(train.destinationId, 'Nicht einsteigen') }}
             </h2>
         </header>
+
         <main class="train-main">
             <ul class="stations">
                 <li class="station-prev">
@@ -140,6 +142,7 @@ const vehicleClass = (vehicle) => {
                         </span>
                     </span>
                 </li>
+
                 <li class="station-current">
                     <span class="strip">
                         <span class="time">
@@ -153,6 +156,7 @@ const vehicleClass = (vehicle) => {
                         </span>
                     </span>
                 </li>
+
                 <li class="station-next">
                     <span class="strip">
                         <span class="time">
@@ -167,10 +171,12 @@ const vehicleClass = (vehicle) => {
                     </span>
                 </li>
             </ul>
+
             <div class="progress">
                 <div class="bar" :style="progressBarStyle" />
             </div>
         </main>
+
         <aside class="train-aside">
             <span class="train-number">{{ trainNumber }}</span>
             <ul class="vehicles">
@@ -182,6 +188,7 @@ const vehicleClass = (vehicle) => {
                     {{ vehicle.number }}
                 </li>
             </ul>
+
             <a
                 href=""
                 class="action-link"
@@ -189,6 +196,7 @@ const vehicleClass = (vehicle) => {
                 v-text="isSelected ? '×' : 'ℹ'"
             />
         </aside>
+
         <div class="last-update"></div>
     </li>
 </template>
