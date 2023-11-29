@@ -103,7 +103,7 @@ export default class SBahnClient {
             } catch (err) {
                 this._log.warn(
                     'Ignored invalid JSON in WebSocket message: ' + err.message,
-                    event.data
+                    event.data,
                 );
                 return;
             }

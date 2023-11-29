@@ -424,15 +424,15 @@ export const useSBahn = () => {
         if (addedVehicles.length > 0) {
             const oldTrains = [];
             addedVehicles.forEach(
-                (vehicle) => vehicle.currentTrain && oldTrains.push(vehicle.currentTrain)
+                (vehicle) => vehicle.currentTrain && oldTrains.push(vehicle.currentTrain),
             );
 
             oldTrains.forEach((oldTrain) => {
                 let movedVehicles = oldTrain.vehicles.filter((vehicle) =>
-                    addedVehicles.includes(vehicle)
+                    addedVehicles.includes(vehicle),
                 );
                 oldTrain.vehicles = oldTrain.vehicles.filter(
-                    (vehicle) => !movedVehicles.includes(vehicle)
+                    (vehicle) => !movedVehicles.includes(vehicle),
                 );
 
                 actions.push({
@@ -488,7 +488,7 @@ export const useSBahn = () => {
                     'Fahrzeug ' +
                     action.vehicles.map((v) => v.number).join('+') +
                     ' ' +
-                    (action.type === 'split' ? 'abgekuppelt' : 'angekuppelt')
+                    (action.type === 'split' ? 'abgekuppelt' : 'angekuppelt'),
             );
         });
     }

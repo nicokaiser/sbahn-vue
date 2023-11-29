@@ -14,7 +14,7 @@ const sortedLines = computed(() =>
         let result = (line1.id === 0) - (line2.id === 0);
         if (result === 0) result = line1.id - line2.id;
         return result;
-    })
+    }),
 );
 </script>
 
@@ -136,7 +136,9 @@ const sortedLines = computed(() =>
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    transition: border 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition:
+        border 0.2s ease-in-out,
+        background 0.2s ease-in-out;
     white-space: nowrap;
     position: relative;
 }

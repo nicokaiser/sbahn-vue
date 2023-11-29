@@ -42,7 +42,7 @@ watch(
     () => props.train.coordinates,
     () => {
         mapMarker.setLatLng(toRaw(props.train.coordinates) || defaultCoordinates);
-    }
+    },
 );
 
 onUnmounted(() => {

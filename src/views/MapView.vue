@@ -65,7 +65,7 @@ const trains = computed(() => {
             (train) =>
                 options.direction.length === 0 ||
                 (!!train.number &&
-                    options.direction.includes(train.number % 2 === 1 ? 'east' : 'west'))
+                    options.direction.includes(train.number % 2 === 1 ? 'east' : 'west')),
         )
         .sort((train1, train2) => {
             let result = (train1.line.id === 0) - (train2.line.id === 0);

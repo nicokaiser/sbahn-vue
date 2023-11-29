@@ -42,7 +42,7 @@ const progress = computed(() => {
 
         let distanceRadian = Math.acos(
             Math.sin(coords1[0]) * Math.sin(coords2[0]) +
-                Math.cos(coords1[0]) * Math.cos(coords2[0]) * Math.cos(coords2[1] - coords1[1])
+                Math.cos(coords1[0]) * Math.cos(coords2[0]) * Math.cos(coords2[1] - coords1[1]),
         );
         let distanceSm = (distanceRadian / Math.PI) * 180 * 60;
         let distanceKm = distanceSm * 1.853248777; // Seemeile bezogen auf den mittleren Erdradius von 6371 km
@@ -354,8 +354,8 @@ const vehicleClass = (vehicle) => {
     font-size: 0;
     white-space: nowrap;
     overflow: hidden;
-    background: linear-gradient(90deg, #c0c0c0 40%, transparent 40%) repeat-x left bottom / 1rem
-            0.2rem,
+    background:
+        linear-gradient(90deg, #c0c0c0 40%, transparent 40%) repeat-x left bottom / 1rem 0.2rem,
         linear-gradient(90deg, #cfcfcf 0%, #cfcfcf 100%) repeat-x left 0 bottom 0.2rem / 100% 0.1rem;
     animation: train-driving 1s infinite linear paused;
 }
@@ -438,7 +438,9 @@ const vehicleClass = (vehicle) => {
     text-decoration: none;
     border: 0.1rem solid rgba(0, 111, 53, 0.35);
     border-radius: 50%;
-    transition: border 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition:
+        border 0.2s ease-in-out,
+        background 0.2s ease-in-out;
 }
 .action-link:hover,
 .action-link:active {
